@@ -44,10 +44,20 @@ function enterOperator() {
   const opBtns = document.querySelectorAll('.operatorBtn');
     opBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        let x = displayValue, operator = btn.id;
-        // PLACEHOLDER FOR Y BELOW FOR TESTING
-        let y = 2;
-        operate(x, y, operator);
+        if (firstEntry == true) {
+          let subTotal = displayValue;
+          //PLACEHOLDER FOR Y BELOW FOR TESTING
+          let y = 2;
+          operate(subTotal, y, btn.id);
+          firstEntry = false;
+        }
+        else if (firstEntry == false) {
+
+        }
+        else {
+          document.querySelector('.display').textContent = "Error with firstEntry flag";
+        }
+        
       });  
     });
   }
@@ -58,6 +68,7 @@ function clearAll() {
     displayValue = 0;
     document.querySelector('.display').textContent = displayValue;
     subTotal = 0;
+    firstEntry = true;
   });
 }
 

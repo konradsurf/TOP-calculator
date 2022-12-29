@@ -12,5 +12,6 @@ Still need/for review:
     runs?  perhaps remove but have conditional that if it's a decimal, 
     then add the zero back?
 
-- function and event listener for clear all button
+
+- remove y=2 from enterOperator function
 
