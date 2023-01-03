@@ -1,21 +1,33 @@
 let firstOperatorEntry = true;
-let enteredNumber = 52;
+let enteredNumber = null;
 let subTotal = 43;
 let enteredOperator = 'multiply';
 let priorOperator = 'add';
-
-/*this should just run the operation using pre-populated variable
-values for now regardless of which operator button is pressed */
-/* Pass the correct operator to operate function based on which
-operator button was pressed */
+let display = document.querySelector('.display');
 
 const opBtns = document.querySelectorAll('.operatorBtn');
-  opBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      subTotal = operate(btn.id, subTotal, enteredNumber);
-      document.querySelector('.display').textContent = subTotal;  
-    })
-  });  
+opBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    subTotal = operate(btn.id, subTotal, enteredNumber);
+    document.querySelector('.display').textContent = subTotal;  
+  })
+});  
+
+
+const numBtns = document.querySelectorAll('.numberBtn');
+numBtns.forEach(btn => {
+  btn.addEventListener('click', () => { 
+    if (enteredNumber == null) {
+      enteredNumber = btn.textContent;
+      display.textContent = enteredNumber;
+    }
+    else {
+      enteredNumber += btn.textContent;
+      display.textContent = enteredNumber;
+    }
+  })
+});
+
 
 
 
