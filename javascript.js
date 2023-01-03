@@ -6,10 +6,13 @@ let priorOperator = 'add';
 
 /*this should just run the operation using pre-populated variable
 values for now regardless of which operator button is pressed */
+/* Pass the correct operator to operate function based on which
+operator button was pressed */
+
 const opBtns = document.querySelectorAll('.operatorBtn');
   opBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      subTotal = operate(priorOperator, subTotal, enteredNumber);
+      subTotal = operate(btn.id, subTotal, enteredNumber);
       document.querySelector('.display').textContent = subTotal;  
     })
   });  
