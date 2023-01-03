@@ -1,12 +1,11 @@
 let firstOperatorEntry = true;
 let enteredNumber = null;
 let subTotal = null;
-let enteredOperator = "multiply";
+let enteredOperator = null;
 let priorOperator = null;
 let display = document.querySelector(".display");
 
-/* add user entry of first operator - first number in operation
-will still be pre-defined at initialization */
+/* Allow chaining of operations (operate on more than two numbers) */
 const opBtns = document.querySelectorAll(".operatorBtn");
 opBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -19,8 +18,10 @@ opBtns.forEach((btn) => {
     } else {
       subTotal = operate(priorOperator, subTotal, enteredNumber);
       document.querySelector(".display").textContent = subTotal;
-      // need to add some more here so next operation in chain works
+      enteredNumber = null;
+      priorOperator = btn.id;
     }
+    console.log("priorOperator:" + priorOperator);
   });
 });
 
@@ -30,11 +31,14 @@ numBtns.forEach((btn) => {
     // if nothing in entered number then assign else concatenate
     if (enteredNumber == null) {
       enteredNumber = btn.textContent;
+      enteredNumber = Number(enteredNumber);
       display.textContent = enteredNumber;
     } else {
       enteredNumber += btn.textContent;
+      enteredNumber = Number(enteredNumber);
       display.textContent = enteredNumber;
     }
+    console.log(typeof(enteredNumber));
   });
 });
 
