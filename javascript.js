@@ -1,76 +1,36 @@
-let displayValue = 0;
-let subTotal;
-let firstEntry = true;
-enterNumbers();
-enterOperator();
-clearAll();
+let firstOperatorEntry = true;
+let enteredNumber = 52;
+let subTotal = 43;
+let enteredOperator = 'multiply';
+let priorOperator = 'add';
+
+/*this should just run the operation using pre-populated variable
+values for now regardless of which operator button is pressed */
+const opBtns = document.querySelectorAll('.operatorBtn');
+  opBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      subTotal = operate(priorOperator, subTotal, enteredNumber);
+      document.querySelector('.display').textContent = subTotal;  
+    })
+  });  
 
 
 
 
-// FUNCTIONS
-function operate(a, b, operator) {
+function operate(operator, a, b) {
   switch(operator) {
     case 'divide':
-      document.querySelector('.display').textContent = divide(a, b);
-      break;
+      return divide(a, b);
     case 'multiply':
-      document.querySelector('.display').textContent = multiply(a, b);
-      break;
+      return multiply(a,b);
     case 'add':
-      document.querySelector('.display').textContent = add(a, b);
-      break;
+      return add(a, b);
     case 'subtract':
-      document.querySelector('.display').textContent = subtract(a, b);
-      break;
+      return subtract(a, b);
   };
-  return;
 }
 
-function enterNumbers() {
-  const btns = document.querySelectorAll('.numberBtn');
-  btns.forEach(btn => {
-    btn.addEventListener('click', () => { 
-    if (displayValue == 0) {
-      displayValue = btn.textContent;}
-    else {
-      displayValue += btn.textContent;}
-    document.querySelector('.display').textContent = displayValue;
-    });
-  });
-}
 
-function enterOperator() {
-  const opBtns = document.querySelectorAll('.operatorBtn');
-    opBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (firstEntry == true) {
-          let subTotal = displayValue;
-          //PLACEHOLDER FOR Y BELOW FOR TESTING
-          let y = 2;
-          operate(subTotal, y, btn.id);
-          firstEntry = false;
-        }
-        else if (firstEntry == false) {
-
-        }
-        else {
-          document.querySelector('.display').textContent = "Error with firstEntry flag";
-        }
-        
-      });  
-    });
-  }
-
-function clearAll() {
-  const clearBtn = document.querySelector('#clear');
-  clearBtn.addEventListener('click', () => {
-    displayValue = 0;
-    document.querySelector('.display').textContent = displayValue;
-    subTotal = 0;
-    firstEntry = true;
-  });
-}
 
 function add(a, b) {
   return a + b;
