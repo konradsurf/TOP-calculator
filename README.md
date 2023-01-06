@@ -3,15 +3,11 @@ Final project assignment of the Fundamentals portion from
  The Odin project coding bootcamp
 
 Still need/for review:
-- account for someone entering a number that is more than one digit - DONE
+- debug calc when using equals sign then operator on result - something fucky when use equal sign then
+start doing more operatons - not always, but sometimes the subtotal gets changed to zero. 
 
 - do i need the id's on the number buttons? 
 
-- should the decimal (.) be added to numberBtn class?
-  - if so, how do i prevent zero from dissapering when event lsitern function
-    runs?  perhaps remove but have conditional that if it's a decimal, 
-    then add the zero back?
+- remove decimal point from buttons
 
-
-- remove y=2 from enterOperator function
 

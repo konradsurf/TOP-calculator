@@ -5,10 +5,6 @@ let enteredOperator = null;
 let priorOperator = null;
 let display = document.querySelector(".display");
 
-/* next step - separate the process for eqauls sign - make sure not assigning it
-to prior operator, make sure display is correct etc
-
-*/
 
 const opBtns = document.querySelectorAll(".operatorBtn");
 opBtns.forEach((btn) => {
