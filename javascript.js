@@ -5,12 +5,9 @@ let enteredOperator = null;
 let priorOperator = null;
 let display = document.querySelector(".display");
 
-/* next step - separate the process for eqauls sign - not assigning it
+/* next step - separate the process for eqauls sign - make sure not assigning it
 to prior operator, make sure display is correct etc
 
-clear button after that? 
-
-check the assignment before doing clear button.
 */
 
 const opBtns = document.querySelectorAll(".operatorBtn");
@@ -48,6 +45,21 @@ numBtns.forEach((btn) => {
     }
     console.log(typeof(enteredNumber));
   });
+});
+
+const equalsBtn = document.querySelector(".equalsBtn");
+equalsBtn.addEventListener('click', () => {
+  if (firstOperatorEntry == false) {  
+    subTotal = operate(priorOperator, subTotal, enteredNumber);
+    document.querySelector(".display").textContent = subTotal;
+    enteredNumber = null;
+    /* do i need these?: 
+    priorOperator = null;  maybe this one along with first entery back to true? 
+    enteredNumber = null;
+    firstOperatorEntry = false;
+    */
+  }
+  console.log('equals btn clicked');
 });
 
 const clearBtn = document.querySelector('#clear');
