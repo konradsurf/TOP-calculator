@@ -10,4 +10,5 @@ start doing more operatons - not always, but sometimes the subtotal gets changed
 
 - remove decimal point from buttons
 
-
+- group varialbe declearations for elements selected with query selector assginmnets? also make sure
+not using selectors on the same element twice (unless needed for some reason)
