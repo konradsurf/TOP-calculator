@@ -5,7 +5,14 @@ let enteredOperator = null;
 let priorOperator = null;
 let display = document.querySelector(".display");
 
-/* Allow chaining of operations (operate on more than two numbers) */
+/* next step - separate the process for eqauls sign - not assigning it
+to prior operator, make sure display is correct etc
+
+clear button after that? 
+
+check the assignment before doing clear button.
+*/
+
 const opBtns = document.querySelectorAll(".operatorBtn");
 opBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -29,6 +36,7 @@ const numBtns = document.querySelectorAll(".numberBtn");
 numBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     // if nothing in entered number then assign else concatenate
+    // change string to number in both cases
     if (enteredNumber == null) {
       enteredNumber = btn.textContent;
       enteredNumber = Number(enteredNumber);
@@ -40,6 +48,17 @@ numBtns.forEach((btn) => {
     }
     console.log(typeof(enteredNumber));
   });
+});
+
+const clearBtn = document.querySelector('#clear');
+clearBtn.addEventListener('click', () => {
+  firstOperatorEntry = true;
+  enteredNumber = null;
+  subTotal = null;
+  enteredOperator = null;
+  priorOperator = null
+  firstEntry = true;
+  display.textContent = 0;
 });
 
 function operate(operator, a, b) {
@@ -70,3 +89,4 @@ function divide(a, b) {
 function multiply(a, b) {
   return a * b;
 }
+
